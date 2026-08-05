@@ -1,0 +1,52 @@
+.settings {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+.head {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 15px 10px 15px;
+}
+.svg {
+    color: var(--text-color);
+}
+.head h2 {
+    font-size: 16px;
+    font-weight: 500;
+}
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+.settings_button {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 10px 15px;
+    width: 100%;
+    height: 50px;
+    color: var(--text-color);
+}
+.settings_button:not(:last-child) {
+    border-bottom: 1px solid var(--border-color);
+}
+.settings_button select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--card-bg);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 30px 6px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+  color: var(--text-color);
+}

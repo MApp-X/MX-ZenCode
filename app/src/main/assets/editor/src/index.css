@@ -1,0 +1,26 @@
+:root {
+  --editor-wrap-indent: 24px;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('./assets/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf') format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+}
+html {
+  scroll-behavior: smooth;
+}
+body a {
+  text-decoration: none;
+}
+body button {
+  border: none;
+  background: none;
+}

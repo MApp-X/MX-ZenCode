@@ -1,0 +1,14 @@
+:root[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --card-bg: #1e1e1e;
+  --border-color: #333333;
+  --primary-color: #0a84ff;
+  --bracket-matching-border-color: rgba(255, 255, 255, 0.4);
+  --active-sub-line-color: rgba(255, 255, 255, 0.12);
+  --cm-gutters-background-color: #222222;
+  --sidebar-shadow-color: rgba(255, 255, 255, 0.2);
+  --sidebar-active-tab-bg: #2c2c2c;
+  --sidebar-active-tab-border: #a1a1a1;
+  --color-text-empty: #9E9E9E;
+}

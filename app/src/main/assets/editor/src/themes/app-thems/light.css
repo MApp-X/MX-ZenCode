@@ -1,0 +1,14 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #121212;
+  --card-bg: #f5f5f5;
+  --border-color: #e0e0e0;
+  --primary-color: #007aff;
+  --bracket-matching-border-color: rgba(25, 26, 26, 0.5);
+  --active-sub-line-color: rgba(0, 0, 0, 0.12);
+  --cm-gutters-background-color: #eeeeee;
+  --sidebar-shadow-color: rgba(0, 0, 0, 0.2);
+  --sidebar-active-tab-bg: #ecebeb;
+  --sidebar-active-tab-border: #757575;
+  --color-text-empty: #6C757D;
+}

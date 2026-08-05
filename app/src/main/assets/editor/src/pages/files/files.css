@@ -1,0 +1,98 @@
+.flies {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    color: var(--text-color);
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px 10px 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+.f-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.f-left h2 {
+    font-size: 16px;
+    font-weight: 500;
+}
+.f-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+    flex: 1;
+    overflow-y: auto;
+}
+.file_blank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    color: var(--color-text-empty);
+    font-size: 16px;
+    font-weight: 500;
+}
+.file_button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 4px;
+    border-radius: 4px;
+}
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 5px 10px;
+  background: var(--bg-color);
+}
+.breadcrumb_item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.folder_name {
+  color: var(--color-text-empty);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.folder_name.active {
+  color: var(--text-color);
+  font-weight: 600;
+}
+.separator {
+  color: #666666;
+  font-size: 14px;
+  user-select: none;
+}
+.svg {
+  color: var(--text-color);
+}
+.icon_wrapper {
+  width: 20px;
+  height: 20px;
+}
+.file_name {
+  color: var(--text-color);
+}

@@ -1,0 +1,38 @@
+{
+  "name": "editor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@codemirror/lang-css": "^6.3.1",
+    "@codemirror/lang-html": "^6.4.11",
+    "@codemirror/lang-javascript": "^6.2.5",
+    "@codemirror/lang-json": "^6.0.2",
+    "@codemirror/lang-markdown": "^6.5.1",
+    "@codemirror/state": "^6.7.1",
+    "@codemirror/view": "^6.43.7",
+    "codemirror": "^6.0.2",
+    "express": "^5.2.1",
+    "fast-glob": "^3.3.3",
+    "fs-extra": "^11.4.0",
+    "kivex-levelo": "^1.4.0",
+    "levelojs": "^2.1.2",
+    "vite-plugin-levelojs": "^1.0.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^8.0.1",
+    "@babel/plugin-transform-typescript": "^8.0.1",
+    "@types/fs-extra": "^11.0.4",
+    "vite": "^8.1.4"
+  }
+}
