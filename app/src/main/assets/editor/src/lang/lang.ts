@@ -1,6 +1,7 @@
 // src/lang/lang.ts
 import { javascript } from '@codemirror/lang-javascript'
 import { html } from '@codemirror/lang-html'
+import { xml } from '@codemirror/lang-xml'
 import { css } from '@codemirror/lang-css'
 import { json } from '@codemirror/lang-json'
 import { markdown } from '@codemirror/lang-markdown'
@@ -21,6 +22,8 @@ export function getLanguageExtension(filename: string) {
       return javascript({ typescript: true });
     case 'tsx':
       return javascript({ typescript: true, jsx: true });
+
+
     case 'html':
       return html();
     case 'htm':
@@ -33,6 +36,24 @@ export function getLanguageExtension(filename: string) {
       return html();
     case 'shtm':
       return html();
+
+
+    case 'svg':
+      return xml();
+    case 'svgz':
+      return xml();
+    case 'xml':
+      return xml();
+    case 'xsl':
+      return xml();
+    case 'xslt':
+      return xml();
+    case 'xsd':
+      return xml();
+    case 'dtd':
+      return xml();
+
+
     case 'css':
       return css();
     case 'scss':
@@ -43,12 +64,18 @@ export function getLanguageExtension(filename: string) {
       return css();
     case 'styl':
       return css();
+
+
     case 'json':
       return json();
     case 'json5':
       return json();
     case 'jsonc':
       return json();
+    case "jsonl":
+      return json();
+
+
     case 'markdown':
       return markdown();
     case 'md':

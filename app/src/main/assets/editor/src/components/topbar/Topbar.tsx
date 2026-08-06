@@ -1,15 +1,24 @@
 // English comments for LeveloJs project
 import { Menu, MenuVertical, Folder, Settings, Save } from 'kivex-levelo';
 import './topbar.css';
-import { state } from 'levelojs';
+import { effect, state } from 'levelojs';
 import { SideBar } from '../sidebar/SideBar';
 import { activeFileData } from '../../pages/home/Home';
-import { saveFileContent, showToast } from '../FileManager';
+import { saveFileContent, showToast, uriFormat } from '../FileManager';
+
+export const [sidebarOpen, setSidebarOpen] = state(false);
 
 export function TopBar() {
-    const [sidebarOpen, setSidebarOpen] = state(false);
+    
     const [menuOpen, setMenuOpen] = state(false);
     const [saveDisabled, setSaveDisabled] = state(false);
+    const [activeFileName, setActiveFileName] = state(activeFileData()?.name || 'untitled.txt');
+    const [activeFilePath, setActiveFilePath] = state(activeFileData()?.path || '');
+
+    effect(() => {
+        setActiveFileName(activeFileData()?.name || 'untitled.txt');
+        setActiveFilePath(activeFileData()?.path || '');
+    })
 
     const handleSaveFile = () => {
         const fileUri = activeFileData()?.path;
@@ -36,8 +45,9 @@ export function TopBar() {
                 <button class="menu" onClick={() => setSidebarOpen(!sidebarOpen())}>
                     <Menu class="svg" />
                 </button>
-                <div class="file-name">
-                    {activeFileData()?.name || 'untitled.txt'}
+                <div class="active-file-data">
+                    <span class="active-file-name" onClick={() => navigator.clipboard.writeText(activeFileName())}>{activeFileName()}</span>
+                    <span class="active-file-path">{uriFormat(activeFilePath())}</span>
                 </div>
             </div>
             <div class="top-right">

@@ -14,9 +14,31 @@
     display: flex;
     gap: 20px;
 }
-.file-name {
+.active-file-data {
+    display: flex;
+    flex-direction: column;
+    color: var(--text-color);
     font-size: 16px;
     font-weight: 600;
+    gap: 10;
+    width: 150px;
+    align-items: flex-start;
+}
+.active-file-path {
+    font-size: 12px;
+    color: var(--text-color);
+    width: 80%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 120px;
+    direction: rtl;
+}
+.active-file-name {
+    flex: 1;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .sidebar-overlay {
     position: fixed;

@@ -1,5 +1,6 @@
 package com.levelo.mxzencode
 
+import android.R
 import android.net.Uri
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
@@ -55,5 +56,35 @@ class WebBridge(
                 mainActivity.applyStatusBarTheme(false)
             }
         }
+    }
+
+    @JavascriptInterface
+    fun renameFile(uri: String, newName: String): Boolean {
+        return fileManager.renameItem(uri, newName)
+    }
+
+    @JavascriptInterface
+    fun deleteFile(uri: String): Boolean {
+        return fileManager.deleteItem(uri);
+    }
+
+    @JavascriptInterface
+    fun createNewFolder(parentURI: String, folderName: String): Boolean {
+        return fileManager.createNewFolder(parentURI, folderName)
+    }
+
+    @JavascriptInterface
+    fun createNewFile(parentURI: String, folderName: String): Boolean {
+        return fileManager.createNewFile(parentURI, folderName)
+    }
+
+    @JavascriptInterface
+    fun checkDir(uri: String): String {
+        return fileManager.checkDir(uri)
+    }
+
+    @JavascriptInterface
+    fun uriFormat(uri: String) : String {
+        return fileManager.getReadablePathFromUri(uri)
     }
 }

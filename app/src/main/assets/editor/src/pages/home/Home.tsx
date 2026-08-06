@@ -64,6 +64,24 @@ export default function Home() {
     });
   });
 
+  effect(() => {
+    const file = activeFileData();
+    if (!editorView || !file) return;
+
+    const currentDoc = editorView.state.doc.toString();
+
+    if (currentDoc !== file.content) {
+      editorView.dispatch({
+        changes: {
+          from: 0,
+          to: currentDoc.length,
+          insert: file.content
+        },
+        effects: languageCompartment.reconfigure(getLanguageExtension(file.name))
+      });
+    }
+  });
+
   return (
     <div class="home">
       <TopBar />

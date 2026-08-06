@@ -7,8 +7,20 @@
   --bracket-matching-border-color: rgba(25, 26, 26, 0.5);
   --active-sub-line-color: rgba(0, 0, 0, 0.12);
   --cm-gutters-background-color: #eeeeee;
+
+  /*sidebar*/
   --sidebar-shadow-color: rgba(0, 0, 0, 0.2);
   --sidebar-active-tab-bg: #ecebeb;
   --sidebar-active-tab-border: #757575;
+
   --color-text-empty: #6C757D;
+
+  /*modal*/
+  --modal-box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+
+  /*scrollbar*/
+  --scrollbar-background: rgba(255, 255, 255, 0.2);
+
+  /*open folder*/
+  --opened-root-folder-backgound: #d4d4d4;
 }

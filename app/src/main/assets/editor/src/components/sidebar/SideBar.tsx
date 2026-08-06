@@ -1,6 +1,7 @@
 import { File, Search, LayoutGrid } from "kivex-levelo";
 import { state } from "levelojs";
 import './sidebar.css';
+import { SidebarFiles } from "./utils/files/files";
 
 interface SideBarProps {
     isOpen: () => boolean;
@@ -27,6 +28,7 @@ export function SideBar({ isOpen, onClose }: SideBarProps) {
                 {activeTab() === 'explorer' && (
                     <div class="tab-content">
                         <h2>Explorer</h2>
+                        <SidebarFiles />
                     </div>
                 )}
                 {activeTab() === 'search' && (

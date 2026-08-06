@@ -9,6 +9,8 @@
     z-index: 999;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 2px 0 12px var(--sidebar-shadow-color);
+    white-space: nowrap;
+    box-sizing: border-box;
 }
 .sidebar.active {
     transform: translateX(260px);
@@ -45,7 +47,26 @@
 .right {
     border-top: 1px solid var(--border-color);
     flex: 1;
+    min-width: 0;
+    box-sizing: border-box;
 }
 .svg {
     color: var(--text-color);
+}
+.tab-content {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+.tab-content h2 {
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+    line-height: 1;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-weight: 500;
 }

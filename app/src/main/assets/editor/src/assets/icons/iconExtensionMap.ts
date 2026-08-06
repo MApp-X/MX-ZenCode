@@ -167,7 +167,6 @@ export const iconExtensionMap: Record<string, string> = {
   ppt: "powerpoint.svg",
   pptx: "powerpoint.svg",
   rst: "info.svg",
-  txt: "info.svg",
 
   // Tools, Build Systems & Infrastructure
   dockerfile: "docker.svg",
@@ -246,5 +245,30 @@ export const iconExtensionMap: Record<string, string> = {
 
   // Logic & Verification
   pddl: "pddl.svg",
-  plan: "plan.svg"
+  plan: "plan.svg",
+
+  graphql: "graphql.svg",
+  gql: "graphql.svg",
+
+  gsp: "grails.svg",
+
+  hh: "hacklang.svg",
+  hack: "hacklang.svg",
+
+  xpi: "firefox.svg",
+
+  plist: "apple.svg",
+  storyboard: "apple.svg",
+  xib: "apple.svg",
+  xcconfig: "apple.svg",
+  ipa: "apple.svg",
+
+  exe: "windows.svg",
+  dll: "windows.svg",
+  msi: "windows.svg",
+
+  cls: "salesforce.svg",
+  trigger: "salesforce.svg",
+  cmp: "salesforce.svg",
+  page: "salesforce.svg",
 };

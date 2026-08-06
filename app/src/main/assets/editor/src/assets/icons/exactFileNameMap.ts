@@ -62,5 +62,11 @@ export const exactFileNameMap: Record<string, string> = {
   "vite.config.js": "vite.svg",
   "vite.config.ts": "vite.svg",
   "webpack.config.js": "webpack.svg",
-  "webpack.config.ts": "webpack.svg"
+  "webpack.config.ts": "webpack.svg",
+
+  "procfile": "heroku.svg",
+  "app.json": "heroku.svg",
+  "ionic.config.json": "ionic.svg",
+  "levelo.config.ts": "levelo.svg",
+  "levelo.config.js": "levelo.svg"
 };
