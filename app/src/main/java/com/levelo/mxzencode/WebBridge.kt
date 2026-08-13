@@ -1,6 +1,7 @@
 package com.levelo.mxzencode
 
 import android.R
+import android.content.Intent
 import android.net.Uri
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
@@ -9,7 +10,8 @@ import android.widget.Toast
 class WebBridge(
     private val fileManager: FileManager,
     private val webView: WebView,
-    private val mainActivity: MainActivity
+    private val mainActivity: MainActivity,
+    private val extensionsManager: ExtensionsManager
 ) {
     @JavascriptInterface
     fun openFolderPicker() {
@@ -86,5 +88,44 @@ class WebBridge(
     @JavascriptInterface
     fun uriFormat(uri: String) : String {
         return fileManager.getReadablePathFromUri(uri)
+    }
+
+    @JavascriptInterface
+    fun onPreview(path: String): Boolean {
+        return try {
+            mainActivity.runOnUiThread {
+                try {
+                    val intent = Intent(mainActivity, PreviewActivity::class.java).apply {
+                        putExtra("FILE_PATH", path)
+                    }
+                    mainActivity.startActivity(intent)
+                } catch (e: Exception) {
+                    Toast.makeText(mainActivity, "Error starting preview: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+            true
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        }
+    }
+
+    @JavascriptInterface
+    fun selectExtension() {
+        extensionsManager.importExtensionZip { success ->
+            webView.post {
+                webView.evaluateJavascript("window.onExtensionImportResult($success)", null)
+            }
+        }
+    }
+
+    @JavascriptInterface
+    fun getInstalledExtensions(): String {
+        return extensionsManager.getInstalledExtensionsJson()
+    }
+
+    @JavascriptInterface
+    fun loadExtension(folderPath: String): String {
+        return extensionsManager.loadExtensionMainCode(folderPath)
     }
 }

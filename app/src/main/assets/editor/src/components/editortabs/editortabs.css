@@ -1,0 +1,43 @@
+.editor-tabs {
+    display: flex;
+    width: 100%;
+    height: 35px;
+    color: var(--text-color);
+    background: var(--background-color);
+    align-items: center;
+    align-self: flex-start;
+    border-bottom: var(--topbar-shadow);
+    overflow-x: auto;
+}
+.tab-button-container {
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    color: var(--text-color);
+    gap: 7px;
+    width: auto;
+    height: 30px;
+    border-right: 1px solid var(--border-color);
+}
+.tabActive {
+    border-top: 2px solid var(--primary-color);
+}
+.tab-button-container p {
+    color: var(--text-color);
+    font-size: 13px;
+    text-overflow: ellipsis;
+    max-width: 100px;
+    min-width: 60px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.svg {
+    color: var(--text-color);
+}
+.fileLogo svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+}

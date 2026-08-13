@@ -1,9 +1,11 @@
 import { mount, state } from "levelojs";
 import { subFolderFiles, checkDir, getFileContent, showToast, deleteItem, renameItem, createNewFile, createNewFolder, } from "../../../FileManager";
 import { getFileIcon } from "../../../../assets/icons/fileIconMapper";
-import './file.css';
-import { setActiveFileData } from "../../../../pages/home/Home";
+import './files.css';
+import { activeFileData, setActiveFileData } from "../../../../pages/home/Home";
 import { setSidebarOpen } from "../../../topbar/Topbar";
+import { getTabContent, saveTab, updateTabContent } from "../../../editortabs/utils/TabManager";
+import { setTabs, tabs } from "../../../editortabs/EditorTabs";
 
 interface FileItem {
     name: string;
@@ -38,13 +40,31 @@ function FileTreeItem({ file, level, onRefresh }: { file: FileItem; level: numbe
 
     const fileClick = () => {
         if (!file.isDirectory) {
-            const rawContent = getFileContent(file.uri);
+
+            const currentActive = activeFileData();
+            if (currentActive) {
+                updateTabContent(currentActive.path, currentActive.content);
+            }
+            const currentTabs = tabs();
+            const existingTab = currentTabs.find(t => t.path === file.uri);
+            let finalContent = "";
+            if (existingTab) {
+                finalContent = getTabContent(file.uri);
+            } else {
+                finalContent = getFileContent(file.uri) || "";
+                const updatedTabs = [...currentTabs, { name: file.name, path: file.uri, content: finalContent }];
+
+                setTabs(updatedTabs);
+                localStorage.setItem("editor-tabs", JSON.stringify(updatedTabs));
+            }
             setActiveFileData({
                 name: file.name,
-                content: rawContent,
+                content: finalContent,
                 path: file.uri
             });
+
             setSidebarOpen(false);
+
         } else {
             if (isOpen()) {
                 setIsOpen(false);

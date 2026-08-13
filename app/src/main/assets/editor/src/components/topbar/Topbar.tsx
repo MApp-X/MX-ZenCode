@@ -1,10 +1,11 @@
 // English comments for LeveloJs project
-import { Menu, MenuVertical, Folder, Settings, Save } from 'kivex-levelo';
+import { Menu, MenuVertical, Folder, Settings, Save, Play } from 'kivex-levelo';
 import './topbar.css';
-import { effect, state } from 'levelojs';
+import { batch, effect, state } from 'levelojs';
 import { SideBar } from '../sidebar/SideBar';
 import { activeFileData } from '../../pages/home/Home';
 import { saveFileContent, showToast, uriFormat } from '../FileManager';
+import { handlePreview } from '../kotlinBridge';
 
 export const [sidebarOpen, setSidebarOpen] = state(false);
 
@@ -12,13 +13,25 @@ export function TopBar() {
     
     const [menuOpen, setMenuOpen] = state(false);
     const [saveDisabled, setSaveDisabled] = state(false);
-    const [activeFileName, setActiveFileName] = state(activeFileData()?.name || 'untitled.txt');
+    const [activeFileName, setActiveFileName] = state(activeFileData()?.name || '');
     const [activeFilePath, setActiveFilePath] = state(activeFileData()?.path || '');
+    const [activeFileExt, setActiveFileExt] = state("");
 
     effect(() => {
-        setActiveFileName(activeFileData()?.name || 'untitled.txt');
-        setActiveFilePath(activeFileData()?.path || '');
-    })
+        const activeFile = activeFileData();
+        const Name = activeFile?.name || '';
+        const Path = activeFile?.path || '';
+        let Ext = '';
+        if (activeFile?.name) {
+            const extension = activeFile.name.split(".").pop()?.toLowerCase();
+            Ext = extension || "";
+        }
+        batch(() => {
+            setActiveFileName(Name);
+            setActiveFilePath(Path);
+            setActiveFileExt(Ext);
+        });
+    });
 
     const handleSaveFile = () => {
         const fileUri = activeFileData()?.path;
@@ -33,10 +46,27 @@ export function TopBar() {
         }
     };
 
+    const isPreviewable = (ext: string | null) => {
+        if (ext) {
+            const supportedExtensions = ["html", "htm", "md", "markdown", "svg"];
+            return supportedExtensions.includes(ext) ? true : false;
+        } else {
+            return false
+        }
+    }
+
+    const handlePreviewSystem = async (filePath: string) => {
+        if (filePath) {
+            await handlePreview(filePath);
+        } else {
+            showToast("Active File Path not found")
+        }
+    }
+
     return (
         <div class="topbar">
             <div 
-                class={sidebarOpen() ? "sidebar-overlay active" : "sidebar-overlay"} 
+                class={sidebarOpen() ? "sidebar-overlay active" : "sidebar-overlay"}
                 onClick={() => setSidebarOpen(false)} 
             />
             <SideBar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
@@ -51,6 +81,12 @@ export function TopBar() {
                 </div>
             </div>
             <div class="top-right">
+                {isPreviewable(activeFileExt()) && (
+                    <button class="play" onClick={(e) => {e.stopPropagation(); handlePreviewSystem(activeFilePath())}}>
+                        <Play class="svg" size={20} />
+                    </button>
+                )}
+                
                 <button onClick={() => setMenuOpen(!menuOpen())}>
                     <MenuVertical class="svg" />
                 </button>

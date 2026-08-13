@@ -5,6 +5,7 @@
     align-items: center;
     padding: 7px 12px 7px 12px;
     border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--topbar-shadow);
 }
 .topbar button {
     border: none;
@@ -27,14 +28,15 @@
 .active-file-path {
     font-size: 12px;
     color: var(--text-color);
-    width: 80%;
     text-overflow: ellipsis;
     overflow: hidden;
     width: 120px;
     direction: rtl;
+    text-align: left;
+    white-space: nowrap;
 }
 .active-file-name {
-    flex: 1;
+    width: 120px;
     display: block;
     white-space: nowrap;
     overflow: hidden;
@@ -59,6 +61,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    gap: 20px;
 }
 .dropdown-menu {
     position: absolute;
@@ -70,7 +73,7 @@
     color: var(--text-color);
     border-radius: 8px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    min-width: 140px;
+    min-width: 180px;
     z-index: 1000;
     padding: 4px;
     opacity: 0;
@@ -100,4 +103,11 @@
 }
 .svg {
     color: var(--text-color);
+}
+.play {
+    display: block;
+    transition: transform 0.1s ease;
+}
+.play:active {
+    transform: scale(0.5);
 }

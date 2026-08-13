@@ -1,0 +1,7 @@
+{
+  "name": "vscode-dark-theme",
+  "displayName": "VS Code Dark Theme",
+  "version": "1.0.0",
+  "type": "theme",
+  "main": "vscodeDark.ts"
+}

@@ -1,10 +1,12 @@
 package com.levelo.mxzencode
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.view.View
 import android.view.WindowInsetsController
 import android.os.Bundle
+import android.webkit.JavascriptInterface
 import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
@@ -18,6 +20,7 @@ import android.widget.Toast
 class MainActivity : AppCompatActivity() {
     private lateinit var webView: WebView
     private lateinit var fileManager: FileManager
+    private lateinit var extensionsManager: ExtensionsManager
     private var isThemeApplied = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,13 +28,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main);
 
         fileManager = FileManager(this)
+        extensionsManager = ExtensionsManager(this)
 
         webView = findViewById(R.id.editorWebView)
 
         webView.settings.javaScriptEnabled = true
         webView.settings.domStorageEnabled = true
 
-        webView.addJavascriptInterface(WebBridge(fileManager, webView, this), "AndroidBridge")
+        webView.addJavascriptInterface(WebBridge(fileManager, webView, this, extensionsManager), "AndroidBridge")
 
         val assetLoader = WebViewAssetLoader.Builder()
             .addPathHandler("/assets/", WebViewAssetLoader.AssetsPathHandler(this))

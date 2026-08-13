@@ -6,6 +6,9 @@ import { css } from '@codemirror/lang-css'
 import { json } from '@codemirror/lang-json'
 import { markdown } from '@codemirror/lang-markdown'
 
+import { htmlLSPExtention } from './lsp/htmlLsp'
+import { cssLSPExtention } from './lsp/cssLsp'
+
 export function getLanguageExtension(filename: string) {
   const ext = filename.split('.').pop()?.toLocaleLowerCase() || '';
 
@@ -25,17 +28,12 @@ export function getLanguageExtension(filename: string) {
 
 
     case 'html':
-      return html();
     case 'htm':
-      return html();
     case 'xhtml':
-      return html();
     case 'xht':
-      return html();
     case 'shtml':
-      return html();
     case 'shtm':
-      return html();
+      return [html(), ...htmlLSPExtention];
 
 
     case 'svg':
@@ -55,15 +53,11 @@ export function getLanguageExtension(filename: string) {
 
 
     case 'css':
-      return css();
     case 'scss':
-      return css();
     case 'sass':
-      return css();
     case 'less':
-      return css();
     case 'styl':
-      return css();
+      return [css(), ...cssLSPExtention];
 
 
     case 'json':

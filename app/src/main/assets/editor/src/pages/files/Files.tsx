@@ -8,6 +8,7 @@ import { setActiveFileData } from "../home/Home";
 import { FileActions } from "./components/fileactions/FileActions";
 import { getFileIcon } from "../../assets/icons/fileIconMapper";
 import { showHidden } from "./components/fileactions/FileActions";
+import { setTabs, tabs } from "../../components/editortabs/EditorTabs";
 
 export default function Files() {
     const [files, setFiles] = state<fileItem[]>([]);
@@ -78,12 +79,19 @@ export default function Files() {
                 setIsLoading(false);
             }, 0);
         } else {
+            const currentTabs = tabs();
+            const isAlreadyOpen = currentTabs.some(t => t.path === item.uri);
             const rawContent = getFileContent(item.uri);
             setActiveFileData({
                 name: item.name,
                 content: rawContent,
                 path: item.uri,
             });
+            if (!isAlreadyOpen) {
+                const updatedTabs = [...currentTabs, {name: item.name, path: item.uri, content: getFileContent(item.uri)}];
+                setTabs(updatedTabs);
+                localStorage.setItem("editor-tabs", JSON.stringify(updatedTabs));
+            }
             window.history.back();
         }
     };

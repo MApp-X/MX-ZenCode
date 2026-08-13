@@ -3,7 +3,7 @@
   --text-color: #ffffff;
   --card-bg: #1e1e1e;
   --border-color: #333333;
-  --primary-color: #0a84ff;
+  --primary-color: #0D9488;
   --bracket-matching-border-color: rgba(255, 255, 255, 0.4);
   --active-sub-line-color: rgba(255, 255, 255, 0.12);
   --cm-gutters-background-color: #222222;
@@ -23,4 +23,10 @@
   
   /*open folder*/
   --opened-root-folder-backgound: #464646;
+
+  /*topbar*/
+  --topbar-shadow: 0 4px 10px rgba(179, 179, 179, 0.13);
+
+  /*tab bar*/
+  --tobar-background-color: #111111a8;
 }

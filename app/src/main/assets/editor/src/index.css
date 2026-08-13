@@ -5,13 +5,17 @@
   font-family: 'JetBrains Mono';
   src: url('./assets/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/Roboto/Roboto-VariableFont_wdth\,wght.ttf') format('truetype');
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: var(--bg-color);
 }
 html {
